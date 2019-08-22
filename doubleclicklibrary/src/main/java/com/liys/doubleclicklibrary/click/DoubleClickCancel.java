@@ -1,4 +1,4 @@
-package com.liys.doubleclicklibrary;
+package com.liys.doubleclicklibrary.click;
 
 /**
  * @Description: 取消事件接口

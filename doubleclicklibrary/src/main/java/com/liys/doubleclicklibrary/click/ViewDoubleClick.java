@@ -1,10 +1,10 @@
-package com.liys.doubleclicklibrary;
+package com.liys.doubleclicklibrary.click;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.View;
 
-import com.liys.doubleclicklibrary.click.IViewDoubleClick;
+import com.liys.doubleclicklibrary.ViewHelper;
 import com.liys.doubleclicklibrary.listener.OnClickListenerProxy;
 
 import java.lang.reflect.Field;
@@ -20,7 +20,7 @@ import java.util.List;
  * @UpdateRemark: 更新说明
  * @Version: 1.0
  */
-class ViewDoubleClick implements IViewDoubleClick{
+public class ViewDoubleClick implements IViewDoubleClick{
 
     @Override
     public void hookActivityViews(Activity activity, final long delayTime) {

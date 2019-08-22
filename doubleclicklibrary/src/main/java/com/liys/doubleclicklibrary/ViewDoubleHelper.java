@@ -5,7 +5,12 @@ import android.app.Application;
 import android.os.Bundle;
 import android.view.View;
 
+import com.liys.doubleclicklibrary.click.DoubleClickCancel;
 import com.liys.doubleclicklibrary.click.IViewDoubleClick;
+import com.liys.doubleclicklibrary.click.ViewDoubleClick;
+import com.liys.doubleclicklibrary.custom.CustomHookClick;
+import com.liys.doubleclicklibrary.custom.ICustomHookClick;
+import com.liys.doubleclicklibrary.custom.IOnClickListener;
 
 
 /**
@@ -20,6 +25,7 @@ import com.liys.doubleclicklibrary.click.IViewDoubleClick;
 public class ViewDoubleHelper {
 
     private static IViewDoubleClick iViewDoubleClick = new ViewDoubleClick();
+    private static ICustomHookClick iCustomHookClick = new CustomHookClick();
     private static Activity mActivity;
     private static long mDelayTime = 1000; //默认间隔时间
 
@@ -100,6 +106,23 @@ public class ViewDoubleHelper {
     public static void hookResView(int viewResId, long delayTime){
         if(mActivity != null){
             iViewDoubleClick.hookResView(mActivity, viewResId, delayTime);
+        }
+    }
+
+
+    /**
+     * hook单个view  并且自定义ClickListener
+     * @param viewResId
+     * @param iClickListener
+     */
+    public static void customHookResView(int viewResId, IOnClickListener iClickListener){
+        if(mActivity != null){
+            iCustomHookClick.hookResView(mActivity, viewResId, iClickListener);
+        }
+    }
+    public static void customHookView(View view, IOnClickListener iClickListener){
+        if(mActivity != null){
+            iCustomHookClick.hookView(mActivity, view, iClickListener);
         }
     }
 }

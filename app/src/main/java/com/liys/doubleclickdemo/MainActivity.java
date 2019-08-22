@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.liys.doubleclicklibrary.ViewDoubleHelper;
 
@@ -20,30 +21,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         tvHint = findViewById(R.id.tv_hint);
 
-        findViewById(R.id.btn).setOnClickListener(this);
+        findViewById(R.id.btn1).setOnClickListener(this);
         findViewById(R.id.btn2).setOnClickListener(this);
-        findViewById(R.id.btn3).setOnClickListener(this);
+        findViewById(R.id.login).setOnClickListener(this);
+        findViewById(R.id.logout).setOnClickListener(this);
 
-        //取消hook事件
-        ViewDoubleHelper.cancelHookView(R.id.btn2);
-        //添加hook事件
-        ViewDoubleHelper.hookResView(R.id.btn3);
+//        //取消hook事件
+        ViewDoubleHelper.cancelHookView(R.id.btn1);
+//        //添加hook事件
+//        ViewDoubleHelper.hookResView(R.id.btn2);
+
+        //统一处理
+        ViewDoubleHelper.customHookResView(R.id.btn1, new LoginClickListener());
+        ViewDoubleHelper.customHookResView(R.id.btn2, new LoginClickListener());
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btn:
+            case R.id.btn1:
                 num++;
                 tvHint.setText(num+"");
                 break;
             case R.id.btn2:
-                num++;
+                num--;
                 tvHint.setText(num+"");
                 break;
-            case R.id.btn3:
-                num++;
-                tvHint.setText(num+"");
+            case R.id.login:
+                LoginClickListener.isLogin = true;
+                Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.logout:
+                LoginClickListener.isLogin = false;
+                Toast.makeText(this, "取消登录", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
