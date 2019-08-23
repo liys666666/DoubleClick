@@ -7,9 +7,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.liys.doubleclicklibrary.ViewDoubleHelper;
+import com.liys.doubleclicklibrary.custom.IAddCustomHookClick;
+import com.liys.doubleclicklibrary.custom.bean.CustomHookBean;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //DoubleClickCancel 取消hook的接口
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, IAddCustomHookClick {
 
     TextView tvHint;
     long num = 0;
@@ -32,8 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        ViewDoubleHelper.hookResView(R.id.btn2);
 
         //统一处理
-        ViewDoubleHelper.customHookResView(R.id.btn1, new LoginClickListener());
-        ViewDoubleHelper.customHookResView(R.id.btn2, new LoginClickListener());
+//        ViewDoubleHelper.customHookResView(R.id.btn1, new LoginClickListener());
+//        ViewDoubleHelper.customHookResView(R.id.btn2, new LoginClickListener());
     }
 
     @Override
@@ -56,5 +61,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(this, "取消登录", Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    @Override
+    public List<CustomHookBean> getCustomHookList() {
+        int[] ids = {R.id.btn1, R.id.btn2}; //需要处理的id
+        List<CustomHookBean> list = new ArrayList<>();
+        for (int i = 0; i < ids.length; i++) { //添加
+            list.add(new CustomHookBean(ids[i], new LoginClickListener()));
+        }
+        return list;
     }
 }

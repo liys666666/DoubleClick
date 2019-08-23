@@ -9,8 +9,12 @@ import com.liys.doubleclicklibrary.click.DoubleClickCancel;
 import com.liys.doubleclicklibrary.click.IViewDoubleClick;
 import com.liys.doubleclicklibrary.click.ViewDoubleClick;
 import com.liys.doubleclicklibrary.custom.CustomHookClick;
+import com.liys.doubleclicklibrary.custom.IAddCustomHookClick;
 import com.liys.doubleclicklibrary.custom.ICustomHookClick;
 import com.liys.doubleclicklibrary.custom.IOnClickListener;
+import com.liys.doubleclicklibrary.custom.bean.CustomHookBean;
+
+import java.util.List;
 
 
 /**
@@ -24,8 +28,8 @@ import com.liys.doubleclicklibrary.custom.IOnClickListener;
  */
 public class ViewDoubleHelper {
 
-    private static IViewDoubleClick iViewDoubleClick = new ViewDoubleClick();
-    private static ICustomHookClick iCustomHookClick = new CustomHookClick();
+    private static IViewDoubleClick mIViewDoubleClick = new ViewDoubleClick();
+    private static ICustomHookClick mICustomHookClick = new CustomHookClick();
     private static Activity mActivity;
     private static long mDelayTime = 1000; //默认间隔时间
 
@@ -49,7 +53,8 @@ public class ViewDoubleHelper {
             @Override
             public void onActivityResumed(Activity activity) {
                 mActivity = activity;
-                iViewDoubleClick.hookActivityViews(activity, delayTime);
+                mIViewDoubleClick.hookActivityViews(activity, delayTime);
+                addCustomHookClick();
             }
 
             @Override
@@ -96,7 +101,7 @@ public class ViewDoubleHelper {
     }
     public static void hookView(View view, long delayTime){
         if(mActivity != null){
-            iViewDoubleClick.hookView(mActivity, view, delayTime);
+            mIViewDoubleClick.hookView(mActivity, view, delayTime);
         }
     }
 
@@ -105,7 +110,7 @@ public class ViewDoubleHelper {
     }
     public static void hookResView(int viewResId, long delayTime){
         if(mActivity != null){
-            iViewDoubleClick.hookResView(mActivity, viewResId, delayTime);
+            mIViewDoubleClick.hookResView(mActivity, viewResId, delayTime);
         }
     }
 
@@ -117,12 +122,43 @@ public class ViewDoubleHelper {
      */
     public static void customHookResView(int viewResId, IOnClickListener iClickListener){
         if(mActivity != null){
-            iCustomHookClick.hookResView(mActivity, viewResId, iClickListener);
+            mICustomHookClick.hookResView(mActivity, viewResId, iClickListener);
         }
     }
     public static void customHookView(View view, IOnClickListener iClickListener){
         if(mActivity != null){
-            iCustomHookClick.hookView(mActivity, view, iClickListener);
+            mICustomHookClick.hookView(mActivity, view, iClickListener);
+        }
+    }
+
+    /**
+     * 自定义实现方式
+     * @param iViewDoubleClick
+     */
+    public static void setIViewDoubleClick(IViewDoubleClick iViewDoubleClick){
+        mIViewDoubleClick = iViewDoubleClick;
+    }
+    public static void setICustomHookClick(ICustomHookClick iCustomHookClick){
+        mICustomHookClick = iCustomHookClick;
+    }
+
+    /**
+     * 添加拦截自定义Click
+     */
+    private static void addCustomHookClick(){
+        if(mActivity == null){
+            return;
+        }
+        if(mActivity instanceof IAddCustomHookClick){ //activity实现了这个接口
+            IAddCustomHookClick iAddCustomHookClick = (IAddCustomHookClick)mActivity;
+            List<CustomHookBean> customHookList =  iAddCustomHookClick.getCustomHookList();
+            if(customHookList == null){
+                return;
+            }
+            for (int i = 0; i < customHookList.size(); i++) {
+                CustomHookBean bean = customHookList.get(i);
+                customHookResView(bean.getViewId(), bean.getiOnClickListener());
+            }
         }
     }
 }
