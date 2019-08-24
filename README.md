@@ -1,9 +1,9 @@
 # DoubleClick
 框架主要有两个功能: 
 
-**1. 无入侵解决按钮重复点击.** [使用方法](https://www.jianshu.com/p/7f3e5c8b8643)
+**1. 无入侵解决按钮重复点击.** [使用方法](https://www.jianshu.com/p/7f3e5c8b8643) (版本V1.0.1的用法)
 
-**2. onClick重复逻辑统一处理.** [使用方法](https://www.jianshu.com/p/b4038a2d68eb)
+**2. onClick重复逻辑统一处理.** [使用方法](https://www.jianshu.com/p/b4038a2d68eb) (版本V1.0.1的用法)
 
 **① 导入框架**
 ```
@@ -34,6 +34,12 @@ public class AppApplication extends Application{
     }
 }
 ```
+
+
+**V.1.0.2以上(包含)**
+
+onClick重复逻辑统一处理新写法
+
 
 **历史版本:**
 
