@@ -1,4 +1,5 @@
 # DoubleClick
+# 一. 基本使用
 框架主要有两个功能(基本用法): 
 
 **1. 无入侵解决按钮重复点击.** [使用方法](https://www.jianshu.com/p/7f3e5c8b8643)
@@ -36,11 +37,12 @@ public class AppApplication extends Application{
 ```
 
 
+# 二.扩展:
 **V.1.0.2(包含)以上**
 
-1. onClick重复逻辑统一处理--添加新写法(可选): 
-先看基本用法: [onClick重复逻辑统一处理](https://www.jianshu.com/p/b4038a2d68eb)
-实现IAddCustomHookClick接口, 其中LoginClickListener可以看上面****
+1. onClick重复逻辑统一处理--添加新写法(可选):
+
+建议先看基本用法: [onClick重复逻辑统一处理](https://www.jianshu.com/p/b4038a2d68eb)
 
 ```
 public class MainActivity extends AppCompatActivity implements IAddCustomHookClick{
@@ -92,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements IAddCustomHookCli
 ```
 
 
-**历史版本:**
+# 3.历史版本:
 
 **V1.0.3:**	修复bug: 每次pause返回, 都重复hookView
 
