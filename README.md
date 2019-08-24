@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements IAddCustomHookCli
 ```
 
 
-# 3.历史版本:
+# 三.历史版本:
 
 **V1.0.3:**	修复bug: 每次pause返回, 都重复hookView
 
