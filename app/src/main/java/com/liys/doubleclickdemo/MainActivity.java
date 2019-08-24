@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.liys.doubleclicklibrary.ViewDoubleHelper;
 import com.liys.doubleclicklibrary.custom.IAddCustomHookClick;
 import com.liys.doubleclicklibrary.custom.bean.CustomHookBean;
 
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.logout).setOnClickListener(this);
 
 //        //取消hook事件
-        ViewDoubleHelper.cancelHookView(R.id.btn1);
+//        ViewDoubleHelper.cancelHookView(R.id.btn1);
 //        //添加hook事件
 //        ViewDoubleHelper.hookResView(R.id.btn2);
 

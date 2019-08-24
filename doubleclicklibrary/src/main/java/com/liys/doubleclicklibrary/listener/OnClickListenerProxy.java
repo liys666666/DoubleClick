@@ -1,5 +1,6 @@
 package com.liys.doubleclicklibrary.listener;
 
+import android.util.Log;
 import android.view.View;
 
 import java.util.Calendar;
@@ -31,6 +32,7 @@ public class OnClickListenerProxy implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        Log.d("66", "hookClick");
         long currentTime = Calendar.getInstance().getTimeInMillis();
         if (currentTime - lastClickTime > min_click_delay_time) {
             lastClickTime = currentTime;

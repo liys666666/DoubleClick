@@ -43,18 +43,18 @@ public class ViewDoubleHelper {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
                 mActivity = activity;
+                mIViewDoubleClick.hookActivityViews(activity, delayTime);
+                addCustomHookClick();
             }
 
             @Override
             public void onActivityStarted(Activity activity) {
-                mActivity = activity;
+
             }
 
             @Override
             public void onActivityResumed(Activity activity) {
-                mActivity = activity;
-                mIViewDoubleClick.hookActivityViews(activity, delayTime);
-                addCustomHookClick();
+
             }
 
             @Override
