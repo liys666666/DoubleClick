@@ -19,7 +19,7 @@ allprojects {
 ```
 //app目录下build.gradle
 dependencies {
-    implementation 'com.github.liys666666:DoubleClick:V1.0.3'  //添加
+    implementation 'com.github.liys666666:DoubleClick:V1.0.4'  //添加
 }
 ```
 **② 自定义的Application初始化即可**
@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements IAddCustomHookCli
 
 
 # 三.历史版本:
+**V1.0.4:**	修复:版本兼容问题
 
 **V1.0.3:**	修复bug: 每次pause返回, 都重复hookView
 
