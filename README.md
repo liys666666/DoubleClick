@@ -51,7 +51,7 @@ public interface UnifiedDoubleClick{ //用户自定义接口
 
 //    >>>>>>>>>>>>>>>>>插入自定义clickListener>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     @AClickListener(activity = MainActivity.class,
-            lisenner = LoginClickListener.class, //自定义拦截器
+            lisenner = LoginClickListener.class, //自定义clickListener
             ids = {R.id.btn2})
     void interceptMain();
 }
