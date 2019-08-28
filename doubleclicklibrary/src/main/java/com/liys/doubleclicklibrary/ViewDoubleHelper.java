@@ -5,15 +5,11 @@ import android.app.Application;
 import android.os.Bundle;
 import android.view.View;
 
-import com.liys.doubleclicklibrary.click.DoubleClickCancel;
-import com.liys.doubleclicklibrary.click.IViewDoubleClick;
-import com.liys.doubleclicklibrary.click.ViewDoubleClick;
-import com.liys.doubleclicklibrary.custom.CustomHookClick;
-import com.liys.doubleclicklibrary.custom.IAddCustomHookClick;
-import com.liys.doubleclicklibrary.custom.ICustomHookClick;
-import com.liys.doubleclicklibrary.custom.IOnClickListener;
-import com.liys.doubleclicklibrary.custom.bean.CustomHookBean;
+import com.liys.doubleclicklibrary.click.doubleclick.AnnotationDoubleClick;
+import com.liys.doubleclicklibrary.click.doubleclick.IViewDoubleClick;
+import com.liys.doubleclicklibrary.listener.IOnClickListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -28,28 +24,34 @@ import java.util.List;
  */
 public class ViewDoubleHelper {
 
-    private static IViewDoubleClick mIViewDoubleClick = new ViewDoubleClick();
-    private static ICustomHookClick mICustomHookClick = new CustomHookClick();
-    private static Activity mActivity;
+    private static IViewDoubleClick mIViewDoubleClick;
     private static long mDelayTime = 1000; //默认间隔时间
+    private static List<Activity> hookList = new ArrayList<>(); //已经hook过的Activity
 
     public static void init(Application application){
         init(application, mDelayTime);
     }
 
     public static void init(Application application, final long delayTime){
+        init(application, delayTime, null);
+    }
+
+    public static void init(Application application, final long delayTime, Class annotationClass){
+        mIViewDoubleClick = new AnnotationDoubleClick(annotationClass);
         mDelayTime = delayTime;
+        hookList.clear();
         application.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-                mActivity = activity;
-                mIViewDoubleClick.hookActivityViews(activity, delayTime);
-                addCustomHookClick();
+                mIViewDoubleClick.register(activity);
             }
 
             @Override
             public void onActivityStarted(Activity activity) {
-
+                if(!hookList.contains(activity)){
+                    mIViewDoubleClick.hookActivityViews(delayTime);
+                    hookList.add(activity);
+                }
             }
 
             @Override
@@ -74,91 +76,32 @@ public class ViewDoubleHelper {
 
             @Override
             public void onActivityDestroyed(Activity activity) {
-                mActivity = null;
+                mIViewDoubleClick.release();
+                hookList.remove(activity);
             }
         });
     }
 
     /**
-     * 取消单个view的hook
-     * @param view
-     */
-    public static void cancelHookView(View view){
-        view.setTag(view.getId(), DoubleClickCancel.CANCEL_TAG_VALUE);
-    }
-    public static void cancelHookView(int viewResId){
-        if(mActivity != null){
-            mActivity.findViewById(viewResId).setTag(viewResId, DoubleClickCancel.CANCEL_TAG_VALUE);
-        }
-    }
-
-    /**
-     * hook单个view
+     * 特殊处理：hook单个view
      * @param view
      */
     public static void hookView(View view){
         hookView(view, mDelayTime);
     }
     public static void hookView(View view, long delayTime){
-        if(mActivity != null){
-            mIViewDoubleClick.hookView(mActivity, view, delayTime);
-        }
+        hookView(view, delayTime, null);
     }
-
-    public static void hookResView(int viewResId){
-        hookResView(viewResId, mDelayTime);
-    }
-    public static void hookResView(int viewResId, long delayTime){
-        if(mActivity != null){
-            mIViewDoubleClick.hookResView(mActivity, viewResId, delayTime);
-        }
-    }
-
-
-    /**
-     * hook单个view  并且自定义ClickListener
-     * @param viewResId
-     * @param iClickListener
-     */
-    public static void customHookResView(int viewResId, IOnClickListener iClickListener){
-        if(mActivity != null){
-            mICustomHookClick.hookResView(mActivity, viewResId, iClickListener);
-        }
-    }
-    public static void customHookView(View view, IOnClickListener iClickListener){
-        if(mActivity != null){
-            mICustomHookClick.hookView(mActivity, view, iClickListener);
-        }
+    public static void hookView(View view, long delayTime, IOnClickListener clickListener){
+        mIViewDoubleClick.hookView(view, delayTime, clickListener);
     }
 
     /**
-     * 自定义实现方式
+     * 扩展：自定义实现
      * @param iViewDoubleClick
      */
-    public static void setIViewDoubleClick(IViewDoubleClick iViewDoubleClick){
+    public void addIViewDoubleClick(IViewDoubleClick iViewDoubleClick){
         mIViewDoubleClick = iViewDoubleClick;
     }
-    public static void setICustomHookClick(ICustomHookClick iCustomHookClick){
-        mICustomHookClick = iCustomHookClick;
-    }
 
-    /**
-     * 添加拦截自定义Click
-     */
-    private static void addCustomHookClick(){
-        if(mActivity == null){
-            return;
-        }
-        if(mActivity instanceof IAddCustomHookClick){ //activity实现了这个接口
-            IAddCustomHookClick iAddCustomHookClick = (IAddCustomHookClick)mActivity;
-            List<CustomHookBean> customHookList =  iAddCustomHookClick.getCustomHookList();
-            if(customHookList == null){
-                return;
-            }
-            for (int i = 0; i < customHookList.size(); i++) {
-                CustomHookBean bean = customHookList.get(i);
-                customHookResView(bean.getViewId(), bean.getiOnClickListener());
-            }
-        }
-    }
 }

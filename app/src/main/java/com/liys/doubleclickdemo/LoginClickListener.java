@@ -2,7 +2,7 @@ package com.liys.doubleclickdemo;
 
 import android.view.View;
 
-import com.liys.doubleclicklibrary.custom.BaseCustomClickListener;
+import com.liys.doubleclicklibrary.listener.BaseClickListener;
 
 
 /**
@@ -14,7 +14,7 @@ import com.liys.doubleclicklibrary.custom.BaseCustomClickListener;
  * @UpdateRemark: 更新说明
  * @Version: 1.0
  */
-public class LoginClickListener extends BaseCustomClickListener {
+public class LoginClickListener extends BaseClickListener {
 
     public static boolean isLogin = false;
 

@@ -1,6 +1,8 @@
-package com.liys.doubleclicklibrary.custom;
+package com.liys.doubleclicklibrary.listener;
 
 import android.view.View;
+
+import com.liys.doubleclicklibrary.listener.IOnClickListener;
 
 /**
  * @Description: 基类
@@ -11,7 +13,7 @@ import android.view.View;
  * @UpdateRemark: 更新说明
  * @Version: 1.0
  */
-public abstract class BaseCustomClickListener implements IOnClickListener {
+public abstract class BaseClickListener implements IOnClickListener {
 
     private View.OnClickListener onClickListener;
 
@@ -39,5 +41,5 @@ public abstract class BaseCustomClickListener implements IOnClickListener {
      * 执行完click之后
      * @param view
      */
-    public abstract void after(View view);
+    public void after(View view){}
 }
