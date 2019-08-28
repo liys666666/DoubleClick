@@ -1,11 +1,14 @@
 package com.liys.doubleclickdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.liys.doubleclickdemo.fragment.MainActivity2;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn2).setOnClickListener(this);
         findViewById(R.id.login).setOnClickListener(this);
         findViewById(R.id.logout).setOnClickListener(this);
+        findViewById(R.id.start).setOnClickListener(this);
 
 //        Log.d("66", "btn1="+R.id.btn1);
 //        Log.d("66", "onCreate");
@@ -46,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.logout:
                 LoginClickListener.isLogin = false;
                 Toast.makeText(this, "取消登录", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.start:
+                startActivity(new Intent(this, MainActivity2.class));
                 break;
         }
     }

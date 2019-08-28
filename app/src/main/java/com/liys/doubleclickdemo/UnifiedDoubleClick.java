@@ -1,5 +1,6 @@
 package com.liys.doubleclickdemo;
 
+import com.liys.doubleclickdemo.fragment.MainActivity2;
 import com.liys.doubleclicklibrary.click.annotation.AAddDoubleClick;
 import com.liys.doubleclicklibrary.click.annotation.ACancelActivity;
 import com.liys.doubleclicklibrary.click.annotation.AClickListener;
@@ -30,10 +31,21 @@ public interface UnifiedDoubleClick{
     void mainActivity();
 
 
+    @AAddDoubleClick(activity = MainActivity2.class,
+            addIds = {R.id.btn, R.id.btn2},
+            times = {2000, 2000})
+    void mainActivity2();
+
+
 
 //    >>>>>>>>>>>>>>>>>自定义click拦截器>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     @AClickListener(activity = MainActivity.class,
             lisenner = LoginClickListener.class,
             ids = {R.id.btn2})
     void interceptMain();
+
+    @AClickListener(activity = MainActivity2.class,
+            lisenner = LoginClickListener.class,
+            ids = {R.id.btn, R.id.btn2})
+    void interceptMain2();
 }

@@ -32,6 +32,12 @@
             android:tag="no"
             android:text="取消登录"/>
     </LinearLayout>
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="no"
+        android:text="跳转"/>
     <TextView
         android:id="@+id/tv_hint"
         android:layout_width="match_parent"

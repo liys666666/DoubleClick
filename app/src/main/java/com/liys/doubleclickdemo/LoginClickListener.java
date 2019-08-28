@@ -1,6 +1,7 @@
 package com.liys.doubleclickdemo;
 
 import android.view.View;
+import android.widget.Toast;
 
 import com.liys.doubleclicklibrary.listener.BaseClickListener;
 
@@ -21,7 +22,10 @@ public class LoginClickListener extends BaseClickListener {
     @Override
     public boolean isNext(View v) {
         //判断登录逻辑
-
+        if(!isLogin){
+            LogUtil.d("未登录");
+            Toast.makeText(v.getContext(), "未登录", Toast.LENGTH_SHORT).show();
+        }
         return isLogin;
     }
 

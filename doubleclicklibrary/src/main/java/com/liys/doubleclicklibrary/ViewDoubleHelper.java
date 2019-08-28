@@ -3,6 +3,7 @@ package com.liys.doubleclicklibrary;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.liys.doubleclicklibrary.click.doubleclick.AnnotationDoubleClick;
@@ -48,15 +49,15 @@ public class ViewDoubleHelper {
 
             @Override
             public void onActivityStarted(Activity activity) {
-                if(!hookList.contains(activity)){
-                    mIViewDoubleClick.hookActivityViews(delayTime);
-                    hookList.add(activity);
-                }
+
             }
 
             @Override
             public void onActivityResumed(Activity activity) {
-
+                if(!hookList.contains(activity)){
+                    mIViewDoubleClick.hookActivityViews(delayTime);
+                    hookList.add(activity);
+                }
             }
 
             @Override

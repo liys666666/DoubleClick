@@ -55,13 +55,13 @@ public class AnnotationDoubleClick extends BaseDoubleClick{
 
             //1.自定义拦截
             if(listenerIdsMap!=null && listenerIdsMap.containsKey(view.getId())){
-                Class clazz = listenerIdsMap.put(view.getId(), null);
+                Class clazz = listenerIdsMap.get(view.getId());
                 hookViewListener(view, clazz, delayTime);
             }
 
             //2.单独处理的View
             if(idsMap!=null && idsMap.containsKey(view.getId())){
-                long time = idsMap.put(view.getId(), 0L);
+                long time = idsMap.get(view.getId());
                 hookView(view, time);
             }else{
                 //3.判断当前Activity是否取消hook事件
