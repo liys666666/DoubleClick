@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.liys.doubleclickdemo.R;
+import com.liys.doubleclicklibrary.ViewDoubleHelper;
 
 /**
  * @Description:
@@ -31,6 +32,12 @@ public class MyFragment extends Fragment {
         btn = view.findViewById(R.id.btn);
         btn.setOnClickListener((View.OnClickListener)getActivity());
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ViewDoubleHelper.hookActivity(2000);
     }
 
     public void setText(String text){

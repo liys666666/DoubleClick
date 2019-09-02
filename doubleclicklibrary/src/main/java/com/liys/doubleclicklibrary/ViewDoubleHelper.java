@@ -54,6 +54,7 @@ public class ViewDoubleHelper {
 
             @Override
             public void onActivityResumed(Activity activity) {
+                mIViewDoubleClick.register(activity);
                 if(!hookList.contains(activity)){
                     mIViewDoubleClick.hookActivityViews(delayTime);
                     hookList.add(activity);
@@ -104,7 +105,9 @@ public class ViewDoubleHelper {
         hookActivity(mDelayTime);
     }
     public static void hookActivity(long delayTime){
-        mIViewDoubleClick.hookActivityViews(delayTime);
+        if(mIViewDoubleClick != null){
+            mIViewDoubleClick.hookActivityViews(delayTime);
+        }
     }
 
     /**

@@ -41,6 +41,9 @@ public class AnnotationDoubleClick extends BaseDoubleClick{
 
     @Override
     public void hookActivityViews(final long delayTime) {
+        if(mActivity==null){ //没有初始化
+            return;
+        }
         //1. 自定义拦截
         final Map<Integer, Class> listenerIdsMap = mViewListenerMap.get(mActivity.getClass());
         //2.单独的View
