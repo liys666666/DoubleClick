@@ -1,6 +1,4 @@
 # DoubleClick
-[V1.0版本](https://github.com/liys666666/DoubleClick/blob/master/README1.0.4.md)
-
 V2.0.1的使用方法: https://www.jianshu.com/p/df0ef3866cc1
 
 **V2.0.2新增:** ViewDoubleHelper.hookActivity(); 重新hookActivity
@@ -87,4 +85,6 @@ public class LoginClickListener extends BaseClickListener{
 * 1. 完全不需要在具体的Activity和Fragment加代码.
 * 2. 是否屏蔽hook、单个View处理, 自定义拦截器，全部使用接口注解处理.
 * 3. 单个View处理、自定义拦截器，兼容Fragment.
+
+[V1.0版本](https://github.com/liys666666/DoubleClick/blob/master/README1.0.4.md)
 
