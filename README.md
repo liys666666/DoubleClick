@@ -3,6 +3,7 @@
 
 V2.0.1的使用方法: https://www.jianshu.com/p/df0ef3866cc1
 
+**V2.0.2新增：**ViewDoubleHelper.hookActivity(); 重新hookActivity
 
 **简单介绍:**
 ```
@@ -76,3 +77,14 @@ public class LoginClickListener extends BaseClickListener{
 
 }
 ```
+
+# 三.历史版本:
+**V2.0.2:**	
+* 1. 修复：注解android9.0不起作用.
+* 2. 手动重新hookActivity
+
+**V2.0.1:**     
+* 1. 完全不需要在具体的Activity和Fragment加代码.
+* 2. 是否屏蔽hook、单个View处理, 自定义拦截器，全部使用接口注解处理.
+* 3. 单个View处理、自定义拦截器，兼容Fragment.
+
