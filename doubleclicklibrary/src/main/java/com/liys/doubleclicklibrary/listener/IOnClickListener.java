@@ -13,5 +13,14 @@ import android.view.View;
  */
 public interface IOnClickListener extends View.OnClickListener {
 
-    void setOnclick(View.OnClickListener onClickListener);
+    void setOnclickListener(View.OnClickListener onClickListener);
+
+    View.OnClickListener getOnclickListener();
+
+    /**
+     * 监听器类型(如果一样的话, 重新hook的时候, 旧的会覆盖新的)
+     * @return
+     */
+    int getType();
+
 }

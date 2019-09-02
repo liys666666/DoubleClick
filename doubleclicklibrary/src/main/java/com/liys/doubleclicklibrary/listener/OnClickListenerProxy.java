@@ -34,4 +34,9 @@ public class OnClickListenerProxy extends BaseClickListener{
         }
         return false;
     }
+
+    @Override
+    public int getType(){
+        return 0;
+    }
 }

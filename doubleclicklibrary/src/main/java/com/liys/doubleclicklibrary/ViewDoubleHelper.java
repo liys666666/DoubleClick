@@ -98,6 +98,16 @@ public class ViewDoubleHelper {
     }
 
     /**
+     * 特殊处理：重新hook当前Activity
+     */
+    public static void hookActivity(){
+        hookActivity(mDelayTime);
+    }
+    public static void hookActivity(long delayTime){
+        mIViewDoubleClick.hookActivityViews(delayTime);
+    }
+
+    /**
      * 扩展：自定义实现
      * @param iViewDoubleClick
      */

@@ -3,6 +3,7 @@ package com.liys.doubleclicklibrary.click.doubleclick;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 
 import com.liys.doubleclicklibrary.listener.IOnClickListener;
@@ -75,9 +76,14 @@ public abstract class BaseDoubleClick implements IViewDoubleClick {
                 onClickListenerField.setAccessible(true);
             }
             View.OnClickListener mOnClickListener = (View.OnClickListener) onClickListenerField.get(listenerInfoObj);
-            //自定义事件监听器
-//            View.OnClickListener onClickListenerProxy = new OnClickListenerProxy(mOnClickListener, delayTime);
-            iOnClickListener.setOnclick(mOnClickListener);
+
+            if(mOnClickListener instanceof IOnClickListener) { //已经hook过了
+                IOnClickListener clickListener = ((IOnClickListener) mOnClickListener);
+                if (iOnClickListener.getType() == clickListener.getType()) { //本次==上一次
+                    mOnClickListener = clickListener.getOnclickListener(); //覆盖
+                }
+            }
+            iOnClickListener.setOnclickListener(mOnClickListener);
             //更换成自己的点击事件
             onClickListenerField.set(listenerInfoObj, iOnClickListener);
         } catch (Exception e) {

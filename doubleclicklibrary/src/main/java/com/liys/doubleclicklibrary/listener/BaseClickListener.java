@@ -2,8 +2,6 @@ package com.liys.doubleclicklibrary.listener;
 
 import android.view.View;
 
-import com.liys.doubleclicklibrary.listener.IOnClickListener;
-
 /**
  * @Description: 基类
  * @Author: liys
@@ -18,14 +16,18 @@ public abstract class BaseClickListener implements IOnClickListener {
     private View.OnClickListener onClickListener;
 
     @Override
-    public void setOnclick(View.OnClickListener onClickListener) {
+    public void setOnclickListener(View.OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
     }
 
+    @Override
+    public View.OnClickListener getOnclickListener() {
+        return this.onClickListener;
+    }
 
     @Override
     public void onClick(View v) {
-        if(onClickListener != null && isNext(v)){
+        if(onClickListener!=null && isNext(v)){
             onClickListener.onClick(v);
             after(v);
         }
@@ -42,4 +44,9 @@ public abstract class BaseClickListener implements IOnClickListener {
      * @param view
      */
     public void after(View view){}
+
+    @Override
+    public int getType(){
+        return -1;
+    }
 }
