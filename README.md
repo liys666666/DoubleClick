@@ -17,7 +17,7 @@ allprojects {
 ```
 //app目录下build.gradle
 dependencies {
-    implementation 'com.github.liys666666:DoubleClick:V2.0.1'  //添加
+    implementation 'com.github.liys666666:DoubleClick:V2.0.2'  //添加
 }
 ```
 ```
