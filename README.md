@@ -3,7 +3,7 @@
 
 V2.0.1的使用方法: https://www.jianshu.com/p/df0ef3866cc1
 
-**V2.0.2新增：**ViewDoubleHelper.hookActivity(); 重新hookActivity
+**V2.0.2新增:** ViewDoubleHelper.hookActivity(); 重新hookActivity
 
 **简单介绍:**
 ```
