@@ -78,7 +78,7 @@ public class LoginClickListener extends BaseClickListener{
 
 # 三.历史版本:
 **V2.0.2:**	
-* 1. 修复：注解android9.0不起作用.
+* 1. 修复兼容问题：注解android9.0不起作用.
 * 2. 手动重新hookActivity
 
 **V2.0.1:**     
