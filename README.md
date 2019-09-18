@@ -1,7 +1,5 @@
 # DoubleClick
-V2.0.1的使用方法: https://www.jianshu.com/p/df0ef3866cc1
-
-**V2.0.2新增:** ViewDoubleHelper.hookActivity(); 重新hookActivity
+V2.0 的使用方法: https://www.jianshu.com/p/df0ef3866cc1
 
 **简单介绍:**
 ```
@@ -16,7 +14,7 @@ allprojects {
 ```
 //app目录下build.gradle
 dependencies {
-    implementation 'com.github.liys666666:DoubleClick:V2.0.2'  //添加
+    implementation 'com.github.liys666666:DoubleClick:V2.0.4'  //添加
 }
 ```
 ```
@@ -77,6 +75,9 @@ public class LoginClickListener extends BaseClickListener{
 ```
 
 # 三.历史版本:
+**V2.0.4:**	
+* 修复: 动态加载View不起作用(包括自定义View, Fragment, RecyclerView中不起作用等等)。
+
 **V2.0.2:**	
 * 1. 修复兼容问题：注解android9.0不起作用.
 * 2. 手动重新hookActivity
