@@ -1,10 +1,9 @@
 package com.liys.doubleclicklibrary.click.doubleclick;
 
-import android.util.Log;
 import android.view.View;
 
-import com.liys.doubleclicklibrary.AnnotationHelper;
-import com.liys.doubleclicklibrary.ViewHelper;
+import com.liys.doubleclicklibrary.helper.AnnotationHelper;
+import com.liys.doubleclicklibrary.helper.ViewHelper;
 import com.liys.doubleclicklibrary.listener.IOnClickListener;
 
 import java.util.ArrayList;
@@ -41,6 +40,11 @@ public class AnnotationDoubleClick extends BaseDoubleClick{
 
     @Override
     public void hookActivityViews(final long delayTime) {
+        hookChildViews(mActivity.getWindow().getDecorView(), delayTime);
+    }
+
+    @Override
+    public void hookChildViews(View parentView, final long delayTime) {
         if(mActivity==null){ //没有初始化
             return;
         }
@@ -49,10 +53,8 @@ public class AnnotationDoubleClick extends BaseDoubleClick{
         //2.单独的View
         final Map<Integer, Long> idsMap = mAddViewMap.get(mActivity.getClass());
 
-        //3. 处理当前Activity的hook事件
-        final View decorView = mActivity.getWindow().getDecorView();
-        //获取 activity中的所有view
-        List<View> list = ViewHelper.getAllChildViews(decorView);
+        //3.parentView的hook事件
+        List<View> list = ViewHelper.getAllChildViews(parentView); //获取parentView中的所有childView
         for (int i = 0; i < list.size(); i++) {
             View view = list.get(i);
 

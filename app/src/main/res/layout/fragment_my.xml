@@ -3,8 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
-        android:id="@+id/btn"
+        android:id="@+id/btn_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="123456"/>
+        android:textAllCaps="false"
+        android:text="btn_fragment"/>
 </LinearLayout>

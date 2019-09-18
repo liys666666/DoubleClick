@@ -29,6 +29,14 @@ public interface IViewDoubleClick {
     void hookActivityViews(final long delayTime);
 
     /**
+     *
+     * @param parentView
+     * @param delayTime
+     */
+    void hookChildViews(View parentView, final long delayTime);
+
+
+    /**
      * hook单个View
      * @param view  需要hook的view
      * @param delayTime 间隔时间

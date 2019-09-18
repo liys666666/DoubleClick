@@ -1,4 +1,4 @@
-package com.liys.doubleclicklibrary;
+package com.liys.doubleclicklibrary.helper;
 
 import android.app.Activity;
 import android.app.Application;
@@ -96,6 +96,13 @@ public class ViewDoubleHelper {
     }
     public static void hookView(View view, long delayTime, IOnClickListener clickListener){
         mIViewDoubleClick.hookView(view, delayTime, clickListener);
+    }
+
+
+    public static void hookChildViews(View parentView){
+        if(mIViewDoubleClick != null){
+            mIViewDoubleClick.hookChildViews(parentView, mDelayTime);
+        }
     }
 
     /**

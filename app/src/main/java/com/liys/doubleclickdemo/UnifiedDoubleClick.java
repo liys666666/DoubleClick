@@ -32,7 +32,7 @@ public interface UnifiedDoubleClick{
 
 
     @AAddDoubleClick(activity = MainActivity2.class,
-            addIds = {R.id.btn, R.id.btn2},
+            addIds = {R.id.btn_add_fragment, R.id.btn_fragment},
             times = {2000, 2000})
     void mainActivity2();
 
@@ -46,6 +46,6 @@ public interface UnifiedDoubleClick{
 
     @AClickListener(activity = MainActivity2.class,
             lisenner = LoginClickListener.class,
-            ids = {R.id.btn, R.id.btn2})
+            ids = {R.id.btn_add_fragment, R.id.btn_fragment})
     void interceptMain2();
 }

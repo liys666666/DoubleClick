@@ -2,7 +2,7 @@ package com.liys.doubleclickdemo;
 
 import android.app.Application;
 
-import com.liys.doubleclicklibrary.ViewDoubleHelper;
+import com.liys.doubleclicklibrary.helper.ViewDoubleHelper;
 
 /**
  * @Description:

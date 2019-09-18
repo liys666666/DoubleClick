@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.liys.doubleclickdemo.R;
-import com.liys.doubleclicklibrary.ViewDoubleHelper;
+import com.liys.doubleclicklibrary.helper.ViewDoubleHelper;
 
 /**
  * @Description:
@@ -23,24 +23,11 @@ import com.liys.doubleclicklibrary.ViewDoubleHelper;
  */
 public class MyFragment extends Fragment {
 
-    Button btn;
-
-    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my, container, false);
-        btn = view.findViewById(R.id.btn);
-        btn.setOnClickListener((View.OnClickListener)getActivity());
+        view.findViewById(R.id.btn_fragment).setOnClickListener((View.OnClickListener)getActivity());
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        ViewDoubleHelper.hookActivity(2000);
-    }
-
-    public void setText(String text){
-        btn.setText(text);
-    }
 }

@@ -1,4 +1,4 @@
-package com.liys.doubleclicklibrary;
+package com.liys.doubleclicklibrary.helper;
 
 import com.liys.doubleclicklibrary.click.annotation.AAddDoubleClick;
 import com.liys.doubleclicklibrary.click.annotation.ACancelActivity;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Description:
+ * @Description: 解析注解
  * @Author: liys
  * @CreateDate: 2019/8/27 14:29
  * @UpdateUser: 更新者
@@ -23,7 +23,7 @@ public class AnnotationHelper {
 
     /**
      * 获取ACancelActivity集合
-     * @param obj
+     * @param annotationClass
      */
     public static List<Class> getACancelActivity(Class annotationClass){
         List<Class> classList = new ArrayList<>();
