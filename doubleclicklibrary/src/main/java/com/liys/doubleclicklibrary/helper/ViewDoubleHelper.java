@@ -85,7 +85,7 @@ public class ViewDoubleHelper {
     }
 
     /**
-     * 特殊处理：hook单个view
+     * 特殊处理：hook单个view(子View不会跟着变化)
      * @param view
      */
     public static void hookView(View view){
@@ -94,14 +94,21 @@ public class ViewDoubleHelper {
     public static void hookView(View view, long delayTime){
         hookView(view, delayTime, null);
     }
+//    @Deprecated
     public static void hookView(View view, long delayTime, IOnClickListener clickListener){
         mIViewDoubleClick.hookView(view, delayTime, clickListener);
     }
 
-
+    /**
+     * 特殊处理：hook单个view(所有子View会跟着一起变化)
+     * @param parentView
+     */
     public static void hookChildViews(View parentView){
+        hookChildViews(parentView, mDelayTime);
+    }
+    public static void hookChildViews(View parentView, long delayTime){
         if(mIViewDoubleClick != null){
-            mIViewDoubleClick.hookChildViews(parentView, mDelayTime);
+            mIViewDoubleClick.hookChildViews(parentView, delayTime);
         }
     }
 

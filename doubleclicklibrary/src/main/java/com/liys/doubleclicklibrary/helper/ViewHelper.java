@@ -32,11 +32,21 @@ public class ViewHelper{
                 //再次 调用本身（递归）
                 allchildren.addAll(getAllChildViews(viewchild));
             }
+        }
+        return allchildren;
+    }
 
-            viewGroup.setOnHierarchyChangeListener(new ViewGroup.OnHierarchyChangeListener() {
+    /**
+     * 直接子View数量变化监听
+     * @param parentView
+     * @param delayTime
+     */
+    public static void childViewCountChangeListener(View parentView, final long delayTime) {
+        if(parentView instanceof ViewGroup){
+            ((ViewGroup)parentView).setOnHierarchyChangeListener(new ViewGroup.OnHierarchyChangeListener() {
                 @Override
                 public void onChildViewAdded(View view, View view1) {
-                    ViewDoubleHelper.hookChildViews(view);
+                    ViewDoubleHelper.hookChildViews(view, delayTime);
                 }
 
                 @Override
@@ -45,7 +55,5 @@ public class ViewHelper{
                 }
             }); //监听
         }
-        return allchildren;
     }
-
 }

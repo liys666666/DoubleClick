@@ -31,10 +31,19 @@ public class AnnotationDoubleClick extends BaseDoubleClick{
             mClassList = AnnotationHelper.getACancelActivity(annotationClass);
             mAddViewMap = AnnotationHelper.getAddDoubleClick(annotationClass);
             mViewListenerMap = AnnotationHelper.getClickListener(annotationClass);
-        }else{
+        }else{ //保证这几个集合不为null
             mClassList = new ArrayList<>();
             mAddViewMap = new HashMap<>();
             mViewListenerMap = new HashMap<>();
+        }
+    }
+
+    @Override
+    public void setAnnotationClass(Class annotationClass, int mode) {
+        if(annotationClass != null){ //覆盖原来的
+            mClassList = AnnotationHelper.getACancelActivity(annotationClass);
+            mAddViewMap = AnnotationHelper.getAddDoubleClick(annotationClass);
+            mViewListenerMap = AnnotationHelper.getClickListener(annotationClass);
         }
     }
 
@@ -57,6 +66,7 @@ public class AnnotationDoubleClick extends BaseDoubleClick{
         List<View> list = ViewHelper.getAllChildViews(parentView); //获取parentView中的所有childView
         for (int i = 0; i < list.size(); i++) {
             View view = list.get(i);
+            ViewHelper.childViewCountChangeListener(view, delayTime);
 
             //1.自定义拦截
             if(listenerIdsMap!=null && listenerIdsMap.containsKey(view.getId())){

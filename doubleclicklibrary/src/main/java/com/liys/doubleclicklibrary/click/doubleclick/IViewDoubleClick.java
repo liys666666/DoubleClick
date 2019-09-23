@@ -15,12 +15,21 @@ import com.liys.doubleclicklibrary.listener.IOnClickListener;
  * @Version: 1.0
  */
 public interface IViewDoubleClick {
+    int ANNOTATION_COVER_MODE = 0; //注解：覆盖模式
+    int ANNOTATION_ADD_MODE = 1; //注解：添加模式
 
     /**
      * 注册
      * @param activity
      */
     void register(Activity activity);
+
+    /**
+     * 属性设置
+     * @param annotationClass
+     * @param type 类型
+     */
+    void setAnnotationClass(Class annotationClass, int mode);
 
     /**
      * hook Activity中所有的子View
