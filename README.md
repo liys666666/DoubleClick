@@ -14,7 +14,7 @@ allprojects {
 ```
 //app目录下build.gradle
 dependencies {
-    implementation 'com.github.liys666666:DoubleClick:V2.0.4'  //添加
+    implementation 'com.github.liys666666:DoubleClick:V2.0.5'  //添加
 }
 ```
 ```
@@ -27,6 +27,9 @@ public class AppApplication extends Application{
 //        ViewDoubleHelper.init(this); //默认时间：1秒
 //        ViewDoubleHelper.init(this, 500); //自定义点击间隔时间(单位：毫秒)
           ViewDoubleHelper.init(this, 1000, UnifiedDoubleClick.class); //自定义点击间隔时间(单位：毫秒)
+          
+          //单独设置, 不同的AnnotationClass可叠加(V2.0.5版本后可用)
+          ViewDoubleHelper.addAnnotationClass(UnifiedDoubleClick.class);
     }
 }
 ```
@@ -73,6 +76,22 @@ public class LoginClickListener extends BaseClickListener{
 
 }
 ```
+
+**扩展---可调用方法**	
+```
+//hook单个view(子View不会跟着变化) 例如: Recyclerview使用的话, itemView是不起作用的
+ViewDoubleHelper.hookView(View view, long delayTime); 
+
+hook单个view(所有子View会跟着一起变化) 例如: Recyclerview使用的话, itemView以及子控件全部有用
+ViewDoubleHelper.hookChildViews(View view, long delayTime); 
+
+//重新hook当前Activity
+ViewDoubleHelper.hookActivity();
+
+//如果你有更好的实现方法, 也可以自己实现
+ViewDoubleHelper.addIViewDoubleClick(IViewDoubleClick iViewDoubleClick);
+```
+
 
 # 三.历史版本:
 **V2.0.5:**	
