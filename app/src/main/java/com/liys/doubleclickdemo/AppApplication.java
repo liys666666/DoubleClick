@@ -20,8 +20,10 @@ public class AppApplication extends Application{
         super.onCreate();
 
 //        ViewDoubleHelper.init(this); //默认时间：1秒
-//        ViewDoubleHelper.init(this, 500); //自定义间隔时间(单位：毫秒)
-        ViewDoubleHelper.init(this, 1000, UnifiedDoubleClick.class); //自定义间隔时间(单位：毫秒)
+        ViewDoubleHelper.init(this, 2000); //自定义间隔时间(单位：毫秒)
+//        ViewDoubleHelper.init(this, 1000, UnifiedDoubleClick.class);
 
+        ViewDoubleHelper.addAnnotationClass(UnifiedDoubleClick.class);
+        ViewDoubleHelper.addAnnotationClass(UnifiedDoubleClick2.class);
     }
 }

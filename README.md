@@ -75,6 +75,12 @@ public class LoginClickListener extends BaseClickListener{
 ```
 
 # 三.历史版本:
+**V2.0.5:**	
+* 优化: 问题描述:原来的注解只能在Application初始化时传一个类进去;
+* 问题1: 如果注解使用过多, 所有的注解都写在一个类里面, 不好管理.
+* 问题2: 在组件化架构中, 有个id无法在Application中获取.
+* 解决办法: 使用新增方法 ViewDoubleHelper.addAnnotationClass(annotationClass); 可设置多个
+
 **V2.0.4:**	
 * 修复: 动态加载View不起作用(包括自定义View, Fragment, RecyclerView中不起作用等等)。
 

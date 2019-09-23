@@ -15,8 +15,8 @@ import com.liys.doubleclicklibrary.listener.IOnClickListener;
  * @Version: 1.0
  */
 public interface IViewDoubleClick {
-    int ANNOTATION_COVER_MODE = 0; //注解：覆盖模式
-    int ANNOTATION_ADD_MODE = 1; //注解：添加模式
+//    int ANNOTATION_COVER_MODE = 0; //注解：覆盖模式
+//    int ANNOTATION_ADD_MODE = 1; //注解：添加模式
 
     /**
      * 注册
@@ -29,7 +29,7 @@ public interface IViewDoubleClick {
      * @param annotationClass
      * @param type 类型
      */
-    void setAnnotationClass(Class annotationClass, int mode);
+    void addAnnotationClass(Class annotationClass);
 
     /**
      * hook Activity中所有的子View

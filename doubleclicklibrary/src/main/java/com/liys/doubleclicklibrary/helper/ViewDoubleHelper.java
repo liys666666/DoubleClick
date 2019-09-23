@@ -3,7 +3,6 @@ package com.liys.doubleclicklibrary.helper;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.liys.doubleclicklibrary.click.doubleclick.AnnotationDoubleClick;
@@ -83,6 +82,11 @@ public class ViewDoubleHelper {
             }
         });
     }
+
+    public static void addAnnotationClass(Class annotationClass) {
+        mIViewDoubleClick.addAnnotationClass(annotationClass);
+    }
+
 
     /**
      * 特殊处理：hook单个view(子View不会跟着变化)

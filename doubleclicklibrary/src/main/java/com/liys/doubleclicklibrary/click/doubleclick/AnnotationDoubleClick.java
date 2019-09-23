@@ -22,12 +22,16 @@ import java.util.Map;
  */
 public class AnnotationDoubleClick extends BaseDoubleClick{
 
+    private  List<Class> mAnnotationClassList = new ArrayList<>(); //注解类--集合
+
     private  List<Class> mClassList; //取消的
     private  Map<Class, Map<Integer, Long>> mAddViewMap; //单个添加
     private  Map<Class, Map<Integer, Class>> mViewListenerMap; //拦截 并自定义click
 
     public AnnotationDoubleClick(Class annotationClass){
         if(annotationClass != null){
+            mAnnotationClassList.clear();
+            mAnnotationClassList.add(annotationClass);
             mClassList = AnnotationHelper.getACancelActivity(annotationClass);
             mAddViewMap = AnnotationHelper.getAddDoubleClick(annotationClass);
             mViewListenerMap = AnnotationHelper.getClickListener(annotationClass);
@@ -39,11 +43,14 @@ public class AnnotationDoubleClick extends BaseDoubleClick{
     }
 
     @Override
-    public void setAnnotationClass(Class annotationClass, int mode) {
-        if(annotationClass != null){ //覆盖原来的
-            mClassList = AnnotationHelper.getACancelActivity(annotationClass);
-            mAddViewMap = AnnotationHelper.getAddDoubleClick(annotationClass);
-            mViewListenerMap = AnnotationHelper.getClickListener(annotationClass);
+    public void addAnnotationClass(Class annotationClass) {
+        if(annotationClass == null ){
+            return;
+        }
+        if(!mAnnotationClassList.contains(annotationClass)){ //添加注解类信息
+            mClassList.addAll(AnnotationHelper.getACancelActivity(annotationClass));
+            mAddViewMap.putAll(AnnotationHelper.getAddDoubleClick(annotationClass));
+            mViewListenerMap.putAll(AnnotationHelper.getClickListener(annotationClass));
         }
     }
 
