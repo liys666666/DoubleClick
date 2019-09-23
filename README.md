@@ -29,7 +29,7 @@ public class AppApplication extends Application{
           ViewDoubleHelper.init(this, 1000, UnifiedDoubleClick.class); //自定义点击间隔时间(单位：毫秒)
           
           //单独设置, 不同的AnnotationClass可叠加(V2.0.5版本后可用)
-          ViewDoubleHelper.addAnnotationClass(UnifiedDoubleClick.class);
+          ViewDoubleHelper.addAnnotationClass(UnifiedDoubleClick2.class);
     }
 }
 ```
