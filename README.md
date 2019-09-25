@@ -94,6 +94,11 @@ ViewDoubleHelper.addIViewDoubleClick(IViewDoubleClick iViewDoubleClick);
 
 
 # 三.历史版本:
+**V2.0.6:**	
+* 修复:
+* ViewDoubleHelper.hookChildViews() 不起作用
+* ViewDoubleHelper.hookActivity()在onResume()前 调用不起作用.
+
 **V2.0.5:**	
 * 优化: 问题描述:原来的注解只能在Application初始化时传一个类进去;
 * 问题1: 如果注解使用过多, 所有的注解都写在一个类里面, 不好管理.
@@ -113,4 +118,6 @@ ViewDoubleHelper.addIViewDoubleClick(IViewDoubleClick iViewDoubleClick);
 * 3. 单个View处理、自定义拦截器，兼容Fragment.
 
 [V1.0版本](https://github.com/liys666666/DoubleClick/blob/master/README1.0.4.md)
+
+# 如果框架中存在不足或者有什么建议, 欢迎指出, 我这边会尽快处理, 让框架更完善, 希望这个框架能帮助更多人, 如果觉得好用, 欢迎star.
 
