@@ -70,6 +70,7 @@ public class AnnotationDoubleClick extends BaseDoubleClick{
         final Map<Integer, Long> idsMap = mAddViewMap.get(mActivity.getClass());
 
         //3.parentView的hook事件
+        hookView(parentView, delayTime); //先hook自己, 再hook子View
         List<View> list = ViewHelper.getAllChildViews(parentView); //获取parentView中的所有childView
         for (int i = 0; i < list.size(); i++) {
             View view = list.get(i);
