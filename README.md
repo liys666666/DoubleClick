@@ -119,5 +119,5 @@ ViewDoubleHelper.addIViewDoubleClick(IViewDoubleClick iViewDoubleClick);
 
 [V1.0版本](https://github.com/liys666666/DoubleClick/blob/master/README1.0.4.md)
 
-# 如果框架中存在不足或者有什么建议, 欢迎指出, 我这边会尽快处理, 让框架更完善, 希望这个框架能帮助更多人, 如果觉得好用, 欢迎star.
+* 如果框架中存在不足或者有什么建议, 欢迎指出, 我这边会尽快处理, 让框架更完善, 希望这个框架能帮助更多人, 如果觉得好用, 欢迎star.
 
