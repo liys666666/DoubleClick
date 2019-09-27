@@ -1,5 +1,8 @@
 # DoubleClick
-V2.0 的使用方法: https://www.jianshu.com/p/df0ef3866cc1
+V2.0 的使用方法: 
+
+简书: https://www.jianshu.com/p/df0ef3866cc1
+CSDN: https://blog.csdn.net/qq_33199629/article/details/101563232
 
 **简单介绍:**
 ```
@@ -14,7 +17,7 @@ allprojects {
 ```
 //app目录下build.gradle
 dependencies {
-    implementation 'com.github.liys666666:DoubleClick:V2.0.5'  //添加
+    implementation 'com.github.liys666666:DoubleClick:V2.0.6'  //添加
 }
 ```
 ```
