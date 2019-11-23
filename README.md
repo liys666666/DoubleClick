@@ -24,7 +24,7 @@ allprojects {
 //app目录下build.gradle
 apply plugin: 'android-aspectjx' //添加
 dependencies {
-    implementation 'com.github.liys666666:DoubleClick:V2.0.6'  //添加
+    implementation 'com.github.liys666666:DoubleClick:V3.0.0'  //添加
 }
 ```
 如果不需要额外处理的话, 到这里就结束了, 同一个按钮点击, 默认最小间隔时间是500毫秒.
