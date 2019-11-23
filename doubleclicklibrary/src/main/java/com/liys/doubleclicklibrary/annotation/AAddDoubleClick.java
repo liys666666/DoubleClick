@@ -1,4 +1,4 @@
-package com.liys.doubleclicklibrary.click.annotation;
+package com.liys.doubleclicklibrary.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

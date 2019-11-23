@@ -19,11 +19,11 @@ import com.liys.doubleclickdemo.R;
  * @UpdateRemark: 更新说明
  * @Version: 1.0
  */
-public class MyFragment extends Fragment {
+public class MyFragment2 extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_my, container, false);
+        View view = inflater.inflate(R.layout.fragment_my2, container, false);
         view.findViewById(R.id.btn_fragment).setOnClickListener((View.OnClickListener)getActivity());
         return view;
     }

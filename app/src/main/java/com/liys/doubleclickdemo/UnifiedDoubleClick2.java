@@ -1,6 +1,6 @@
 package com.liys.doubleclickdemo;
 
-import com.liys.doubleclicklibrary.click.annotation.ACancelActivity;
+import com.liys.doubleclicklibrary.annotation.ACancelActivity;
 
 /**
  * @Description: 统一处理 DoubleClick

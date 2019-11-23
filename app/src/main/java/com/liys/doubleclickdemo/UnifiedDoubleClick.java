@@ -1,8 +1,8 @@
 package com.liys.doubleclickdemo;
 
 import com.liys.doubleclickdemo.fragment.MainActivity2;
-import com.liys.doubleclicklibrary.click.annotation.AAddDoubleClick;
-import com.liys.doubleclicklibrary.click.annotation.AClickListener;
+import com.liys.doubleclicklibrary.annotation.AAddDoubleClick;
+import com.liys.doubleclicklibrary.annotation.AClickListener;
 
 /**
  * @Description: 统一处理 DoubleClick
@@ -26,7 +26,7 @@ public interface UnifiedDoubleClick{
 //    >>>>>>>>>>>>>>>>>>>单个view处理>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 //    @AAddDoubleClick(activity = MainActivity.class,
 //            addIds = {R.id.btn1, R.id.btn2},
-//            times = {2000, 2000})
+//            times = {2000, 0})
 //    void mainActivity();
 
 

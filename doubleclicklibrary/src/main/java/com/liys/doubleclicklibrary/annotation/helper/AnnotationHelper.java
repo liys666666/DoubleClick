@@ -1,13 +1,11 @@
-package com.liys.doubleclicklibrary.helper;
+package com.liys.doubleclicklibrary.annotation.helper;
 
-import com.liys.doubleclicklibrary.click.annotation.AAddDoubleClick;
-import com.liys.doubleclicklibrary.click.annotation.ACancelActivity;
-import com.liys.doubleclicklibrary.click.annotation.AClickListener;
+import com.liys.doubleclicklibrary.annotation.AAddDoubleClick;
+import com.liys.doubleclicklibrary.annotation.ACancelActivity;
+import com.liys.doubleclicklibrary.annotation.AClickListener;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,8 +23,8 @@ public class AnnotationHelper {
      * 获取ACancelActivity集合
      * @param annotationClass
      */
-    public static List<Class> getACancelActivity(Class annotationClass){
-        List<Class> classList = new ArrayList<>();
+    public static Map<Class, String> getACancelActivity(Class annotationClass){
+        Map<Class, String> classMap = new HashMap<>();
         Method[] methods = annotationClass.getDeclaredMethods(); //解析方法上的注解
         for(Method method : methods){
             boolean methodHasAnno = method.isAnnotationPresent(ACancelActivity.class);
@@ -34,12 +32,12 @@ public class AnnotationHelper {
                 ACancelActivity methodAnno = method.getAnnotation(ACancelActivity.class); //得到注解
                 Class[] clazzs = methodAnno.activitys();
                 for (int i = 0; i < clazzs.length; i++) {
-                    classList.add(clazzs[i]);
+                    classMap.put(clazzs[i], clazzs[i].getName());
                 }
-                return classList;
+                return classMap;
             }
         }
-        return classList;
+        return classMap;
     }
 
 

@@ -8,10 +8,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="btn_fragment1"/>
+        android:text="btn_fragment2"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:text="Fragment1"/>
+        android:text="Fragment2"/>
 </LinearLayout>

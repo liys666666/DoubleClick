@@ -2,7 +2,7 @@ package com.liys.doubleclickdemo;
 
 import android.app.Application;
 
-import com.liys.doubleclicklibrary.helper.ViewDoubleHelper;
+import com.liys.doubleclicklibrary.DoubleClickHelper;
 
 /**
  * @Description:
@@ -19,11 +19,10 @@ public class AppApplication extends Application{
     public void onCreate() {
         super.onCreate();
 
-//        ViewDoubleHelper.init(this); //默认时间：1秒
-        ViewDoubleHelper.init(this, 2000); //自定义间隔时间(单位：毫秒)
-//        ViewDoubleHelper.init(this, 1000, UnifiedDoubleClick.class);
-
-        ViewDoubleHelper.addAnnotationClass(UnifiedDoubleClick.class);
-        ViewDoubleHelper.addAnnotationClass(UnifiedDoubleClick2.class);
+        DoubleClickHelper
+                .getInstance()
+                .delayTime(500)  //间隔时间
+                .addAnnotationClass(UnifiedDoubleClick.class)
+                .addAnnotationClass(UnifiedDoubleClick2.class);
     }
 }

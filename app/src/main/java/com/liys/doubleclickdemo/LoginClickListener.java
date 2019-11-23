@@ -3,7 +3,7 @@ package com.liys.doubleclickdemo;
 import android.view.View;
 import android.widget.Toast;
 
-import com.liys.doubleclicklibrary.listener.BaseClickListener;
+import com.liys.doubleclicklibrary.listener.IOnClickListener;
 
 
 /**
@@ -11,11 +11,11 @@ import com.liys.doubleclicklibrary.listener.BaseClickListener;
  * @Author: liys
  * @CreateDate: 2019/8/22 15:52
  * @UpdateUser: 更新者
- * @UpdateDate: 2019/8/22 15:52
+ * @UpdateDate: 2019/11/23 22:52
  * @UpdateRemark: 更新说明
  * @Version: 1.0
  */
-public class LoginClickListener extends BaseClickListener {
+public class LoginClickListener implements IOnClickListener {
 
     public static boolean isLogin = false;
 

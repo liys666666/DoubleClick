@@ -1,6 +1,5 @@
-package com.liys.doubleclicklibrary.listener;
+package com.liys.doubleclicklibrary.hook;
 
-import android.util.Log;
 import android.view.View;
 
 import java.util.Calendar;
@@ -14,29 +13,29 @@ import java.util.Calendar;
  * @UpdateRemark: 更新说明
  * @Version: 1.0
  */
-public class OnClickListenerProxy extends BaseClickListener{
+public class HookOnClickListener implements View.OnClickListener{
 
-    private long min_click_delay_time = 1000; //点击最小间隔时间
+    private long min_click_delay_time = 500; //点击最小间隔时间
     private long lastClickTime = 0;
+    private View.OnClickListener onClickListener;
 
-    public OnClickListenerProxy() {}
+    public HookOnClickListener() {}
 
-    public OnClickListenerProxy(long min_click_delay_time) {
+    public HookOnClickListener(long min_click_delay_time) {
         this.min_click_delay_time = min_click_delay_time;
     }
 
-    @Override
-    public boolean isNext(View view) {
-        long currentTime = Calendar.getInstance().getTimeInMillis();
-        if (currentTime - lastClickTime > min_click_delay_time) {
-            lastClickTime = currentTime;
-            return true;
-        }
-        return false;
+    public void setOnclickListener(View.OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
     }
 
+
     @Override
-    public int getType(){
-        return 0;
+    public void onClick(View v) {
+        long currentTime = Calendar.getInstance().getTimeInMillis();
+        if (currentTime - lastClickTime > min_click_delay_time) {
+            onClickListener.onClick(v);
+            lastClickTime = currentTime;
+        }
     }
 }
