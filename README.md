@@ -2,10 +2,12 @@
 
 简书: 
 [DoubleClick---3.0版本](https://www.jianshu.com/p/daac21821c43)
+
 [DoubleClick---2.0版本](https://www.jianshu.com/p/df0ef3866cc1)
+
 [DoubleClick---1.0版本](https://www.jianshu.com/p/7f3e5c8b8643)
 
-##V3.0 的使用方法: 
+**V3.0 的使用方法:** 
 
 **1.导入:**
 ```
