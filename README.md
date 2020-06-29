@@ -16,7 +16,7 @@ buildscript {
     ...
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0'
-        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.0' //添加
+        classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.8' //添加
     }
 }
 
